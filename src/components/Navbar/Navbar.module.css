@@ -1,0 +1,19 @@
+.nav {
+  grid-area: navbar;
+
+  background-color: aquamarine;
+  padding: 20px;
+}
+
+.item {
+  margin: 10px;
+
+  color: blue;
+  text-decoration: none;
+}
+
+.active
+{
+  color:rgba(157, 116, 1, 0.998);
+  text-decoration: none;
+}

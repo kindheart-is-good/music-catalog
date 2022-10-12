@@ -1,0 +1,10 @@
+.content {
+    grid-area: content;
+
+    background-color: yellow;
+    margin: 20px;
+}
+
+.contentItems .active {
+    color: goldenrod;
+}
