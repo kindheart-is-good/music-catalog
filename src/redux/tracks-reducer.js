@@ -1,4 +1,4 @@
-const SHOW_CONTENT = 'SHOW_CONTENT';
+const SHOW_TRACKS = 'SHOW_TRACKS';
 
 let initialState = {
     tracks: [
@@ -6,15 +6,12 @@ let initialState = {
         {artist: 'ANSR', tittle: 'M01', album: 'Chimhyangmoo 침​향​무 [OSC005]', year: 2021, label: 'Oslated', genre: 'deep forest nature psychedelic techno South Korea', folderPC: 'mood Obscure', bpm: '140', scale: 'F min'},
         {artist: 'RX-101', tittle: 'Dopamine', album: 'Dopamine', year: 2019, label: 'Suction Records', genre: 'electronic braindance electro idm rephlex techno Netherlands', folderPC: 'other Ambient or Atmospheric sound', bpm: '119', scale: 'A# min'},
     ],
-    newMessageBody: "",
-    isFetching: false,
 }
 
-const contentReducer = (state = initialState, action) => {
-    /* Насколько глубоко нужно копировать? Мы должны копировать только то что планируем изменить (ниже). */
+const tracksReducer = (state = initialState, action) => {
     switch (action.type) {
 
-        case SHOW_CONTENT:
+        case SHOW_TRACKS:
             return {
                 ...state,
             }
@@ -24,6 +21,6 @@ const contentReducer = (state = initialState, action) => {
     }
 }
 
-export const showContentAC = () => ({type: SHOW_CONTENT})
+export const showTracks = () => ({type: SHOW_TRACKS})
 
-export default contentReducer;
+export default tracksReducer;

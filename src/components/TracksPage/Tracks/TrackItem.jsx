@@ -1,9 +1,9 @@
 import React from "react";
-import styles from "./ContentArticle.module.css"
+import styles from "./TrackItem.module.css"
 import {NavLink} from "react-router-dom";
 
-const ContentItem = (props) => {
-    let path = "/content/" + props.tittle;
+const TrackItem = (props) => {
+    let path = "/tracks/" + props.tittle;
 
     return (
         <div className={styles.article}>
@@ -32,9 +32,10 @@ const ContentItem = (props) => {
                         <li>еще <span className={styles.articleData}></span></li>
                     </ul>
                 </div>
+
             </NavLink>
         </div>
     )
 }
 
-export default ContentItem;
+export default TrackItem;
