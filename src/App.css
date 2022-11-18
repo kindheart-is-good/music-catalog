@@ -1,39 +1,6 @@
-.globalTheme {
-  /*height: 1169px;*/   /*  нужно выставлять как-то по-другому.   */
-  /*width: auto;*/
-
-        /*      LIGHT THEME     */
-  /*background-color: #ffffff*/   /* это стандартный белый цвет который даётся по умолчанию.  */
-  /*background-color: #f8f8f8*/
-  /*background-color: #f3f3f3*/
-  /*background-color: #f2f2f2*/
-  /*background-color: #e5e5e5*/
-
-        /*      DARK THEME      */
-  /*background-color: #0d1117;*/
-  /*background-color: #161b22;*/
-    /*background-color: #21262d;*/
-  /*background-color: #202124;*/
-  /*background-color: #303134;*/
-  /*background-color: #1b1b1b;*/
-  /*background-color: #343434;*/
-  /*background-color: #373737;*/
-    /*background-color: #555555;*/
-    /*background-color: #444444;*/
-  /*background-color: #3f3f3f;*/
-    /*background-color: #0c0c0c;*/
-  /*background-color: #262626;*/
-  /*background-color: #323232;*/
-  /*background-color: #1c1c1c;*/
-  /*background-color: #252526;*/
-    /*background-color: #000000;*/
-  /*background-color: #181818;*/
-  /*background-color: #121212;*/
-}
-
 .app-wrapper {
   margin: 0 auto;
-  width: 1650px;
+  width: 1400px;
 
   display: grid;
 
@@ -41,7 +8,9 @@
   "header header"
   "navbar content";
   grid-template-rows: 60px 1fr;
-  grid-template-columns: 2fr 10fr;
+  /*grid-template-columns: 1fr 4fr;*/
+  /*grid-template-columns: 3fr 12fr;*/
+  grid-template-columns: 6fr 24fr;
 }
 
 .app-wrapper-content {

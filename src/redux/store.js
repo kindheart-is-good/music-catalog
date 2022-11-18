@@ -1,8 +1,10 @@
 import {combineReducers, legacy_createStore} from "redux";
 import tracksReducer from "./tracks-reducer";
+import mixReducer from "./mix-reducer";
 
 let reducers = combineReducers({
     tracksPage: tracksReducer,
+    mixPage: mixReducer,
 });
 
 //let store = createStore(reducers);
