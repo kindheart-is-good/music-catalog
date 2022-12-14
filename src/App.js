@@ -4,7 +4,7 @@ import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
 import StartContentPage from "./components/StartContentPage/StartContentPage";
 import TracksPageContainer from "./components/TracksPage/TracksPageContainer";
-import Mix from "./components/Mix/Mix";
+import MixPage from "./components/Mix/MixPage";
 
 function App(props) {
     return (
@@ -20,7 +20,7 @@ function App(props) {
                     <Route path="/tracks/*"
                            element={<TracksPageContainer />} />
                     <Route path="/mix/*"
-                           element={<Mix />} />
+                           element={<MixPage />} />
                 </Routes>
             </div>
         </div>

@@ -28,6 +28,10 @@ const TracksPage = (props) => {
     //debugger;
     return (
         <div>
+            {/*<div className={styles.debugSection}>
+                {props.tracks[0].artist}
+            </div>*/}
+
             { tracksItems }
             { tracksMiniItems }
         </div>

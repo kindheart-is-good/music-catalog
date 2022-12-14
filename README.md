@@ -10,6 +10,7 @@ ___
 
 * react-router-dom
 * redux
+* redux toolkit
 * react-redux
 
 <div><i>This project was created with utility:</i></div>
