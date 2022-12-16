@@ -1,15 +1,14 @@
 import React, {useState} from 'react';
 import styles from './Mix.module.css';
-import {useDispatch, useSelector} from "react-redux";
-import {addTrackToMix} from "../store/mixSlice";
+import {useAppDispatch, useAppSelector} from "../../hooks/reduxHooks";
 
-function MixPage() {
+const MixPage: React.FC = () => {
 
     const [text, setText] = useState('');
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
-    const mix = useSelector(state => state.mixPage.mixOne);
-    const currentMix = useSelector(state => state.mixPage.currentMix);
+    const mix = useAppSelector(state => state.mixPage.mixOne);
+    const currentMix = useAppSelector(state => state.mixPage.currentMix);
 
     const [isReady, setReady] = useState(false);
 
@@ -22,7 +21,7 @@ function MixPage() {
                     onChange={(e) => setText(e.target.value)}
                 />
                 <button onClick={()=>{
-                    dispatch(addTrackToMix({text}));
+                    /*dispatch(addTrackToMix({text}));*/
                     setText('');
                 }}>
                     Add Track
@@ -31,7 +30,8 @@ function MixPage() {
 
             <button onClick={()=>{
                 setReady(true)
-                console.log(currentMix.map(t => t.id))
+                //console.log(currentMix.map(t => t.tittle))
+                console.log(mix.map(t => t.tittle))
             }}>
                 Ready
             </button>

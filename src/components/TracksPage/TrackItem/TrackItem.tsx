@@ -1,8 +1,9 @@
 import React from "react";
 import styles from "./TrackItem.module.css"
 import {NavLink} from "react-router-dom";
+import {ITrack} from "../../../models/ITrack";
 
-const TrackItem = (props) => {
+const TrackItem: React.FC<ITrack> = (props) => {
     let path = "/tracks/" + props.tittle;
 
     return (
@@ -23,7 +24,7 @@ const TrackItem = (props) => {
                         <p><b>year: </b>{props.year}</p>
                         <p><b>label: </b>{props.label}</p>
                         <p><b>genre: </b>{props.genre}</p>
-                        <p><b>folderPC: </b>{props.folderPC}</p>
+                        <p><b>folderPC: </b>{props.folder}</p>
                         <p><b>bpm: </b>{props.bpm}</p>
                         <p><b>scale: </b>{props.scale}</p>
                     </div>

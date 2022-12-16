@@ -1,15 +1,15 @@
 .header {
-  grid-area: header;
+    grid-area: header;
 
-  /*background-color: orange;*/
-  /*background-color: #f4de4d;*/
-  /*background-color: #f6df51;*/
-  background-color: #fef069;
-  /*background-color: #eef060;*/
-  /*background-color: #e4e751;*/
-  /*background-color: #edff80;*/
+    /*background-color: orange;*/
+    /*background-color: #f4de4d;*/
+    /*background-color: #f6df51;*/
+    background-color: #fef069;
+    /*background-color: #eef060;*/
+    /*background-color: #e4e751;*/
+    /*background-color: #edff80;*/
 }
 
 .header img {
-  width: 100px;
+    width: 100px;
 }

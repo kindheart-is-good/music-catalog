@@ -3,10 +3,10 @@ import {Route, Routes} from "react-router-dom";
 import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
 import StartContentPage from "./components/StartContentPage/StartContentPage";
-import TracksPageContainer from "./components/TracksPage/TracksPageContainer";
+import TracksPage from "./components/TracksPage/TracksPage";
 import MixPage from "./components/Mix/MixPage";
 
-function App(props) {
+function App() {
     return (
         <div className='app-wrapper'>
             <Header/>
@@ -14,13 +14,13 @@ function App(props) {
             <div className='app-wrapper-content'>
                 <Routes>
                     <Route path="/"
-                           element={<StartContentPage />} />
+                           element={<StartContentPage/>}/>
                     <Route path="/content/"
-                           element={<StartContentPage />} />
+                           element={<StartContentPage/>}/>
                     <Route path="/tracks/*"
-                           element={<TracksPageContainer />} />
+                           element={<TracksPage/>}/>
                     <Route path="/mix/*"
-                           element={<MixPage />} />
+                           element={<MixPage/>}/>
                 </Routes>
             </div>
         </div>
