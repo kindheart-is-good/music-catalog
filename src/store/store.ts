@@ -1,9 +1,11 @@
 import {configureStore} from '@reduxjs/toolkit';
-import mixReducer from './mixSlice'
+import mixReducer from './mixSlice';
+import extApiReducer from "./extApiSlice";
 
 const store = configureStore({
     reducer: {
         mixPage: mixReducer,
+        extApiPage: extApiReducer,
     },
 });
 

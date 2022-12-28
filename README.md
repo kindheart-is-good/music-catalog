@@ -12,6 +12,7 @@ ___
 * redux toolkit
 * react-redux
 * react-router-dom
+* axios
 
 <div><i>This project was created with utility:</i></div>
 :white_check_mark: npx create-react-app

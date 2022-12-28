@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar/Navbar";
 import StartContentPage from "./components/StartContentPage/StartContentPage";
 import TracksPage from "./components/TracksPage/TracksPage";
 import MixPage from "./components/Mix/MixPage";
+import ExtApi from "./components/ExtApi/ExtApi";
 
 function App() {
     return (
@@ -21,6 +22,8 @@ function App() {
                            element={<TracksPage/>}/>
                     <Route path="/mix/*"
                            element={<MixPage/>}/>
+                    <Route path="/ext-api/*"
+                           element={<ExtApi/>}/>
                 </Routes>
             </div>
         </div>

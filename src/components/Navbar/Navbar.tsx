@@ -14,6 +14,9 @@ const Navbar = () => {
             <div className={styles.item}>
                 <NavLink to="/mix/" className={ navData => navData.isActive ? styles.active : styles.item }>Mix</NavLink>
             </div>
+            <div className={styles.item}>
+                <NavLink to="/ext-api/" className={ navData => navData.isActive ? styles.active : styles.item }>Ext Api</NavLink>
+            </div>
         </nav>
     )
 }
