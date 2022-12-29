@@ -6,7 +6,7 @@ import TrackMiniItem from "./TrackItem/TrackMiniItem";
 
 const TracksPage = () => {
 
-    const tracks = useAppSelector(state => state.mixPage.tracks);
+    const tracks = useAppSelector(state => state.mixReducer.tracks);
 
     let tracksItems = tracks.map( t => <TrackItem key={t.tittle} artist={t.artist}
                                                         tittle={t.tittle}

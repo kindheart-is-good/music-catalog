@@ -6,9 +6,9 @@ import {fetchUsers} from "../../store/actions/extApiActions";
 const ExtApi: React.FC = () => {
 
     const dispatch = useAppDispatch();
-    const mix = useAppSelector(state => state.extApiPage.mixOne);
-    const currentMix = useAppSelector(state => state.extApiPage.currentMix);
-    const {coffee} = useAppSelector(state => state.extApiPage);
+    const mix = useAppSelector(state => state.extApiReducer.mixOne);
+    const currentMix = useAppSelector(state => state.extApiReducer.currentMix);
+    const {coffee} = useAppSelector(state => state.extApiReducer);
 
     const [isReady, setReady] = useState(false);
     const [text, setText] = useState('');
