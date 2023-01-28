@@ -1,11 +1,11 @@
 import "./App.css";
 import {Route, Routes} from "react-router-dom";
+import StartContentPage from "./pages/StartContentPage/StartContentPage";
+import TracksPage from "./pages/TracksPage/TracksPage";
+import MixPage from "./pages/Mix/MixPage";
+import ExtApi from "./pages/ExtApi/ExtApi";
 import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
-import StartContentPage from "./components/StartContentPage/StartContentPage";
-import TracksPage from "./components/TracksPage/TracksPage";
-import MixPage from "./components/Mix/MixPage";
-import ExtApi from "./components/ExtApi/ExtApi";
 
 function App() {
     return (
@@ -15,15 +15,15 @@ function App() {
             <div className='app-wrapper-content'>
                 <Routes>
                     <Route path="/"
-                           element={<StartContentPage/>}/>
+                           element={<StartContentPage />} />
                     <Route path="/content/"
-                           element={<StartContentPage/>}/>
+                           element={<StartContentPage />} />
                     <Route path="/tracks/*"
-                           element={<TracksPage/>}/>
+                           element={<TracksPage />} />
                     <Route path="/mix/*"
-                           element={<MixPage/>}/>
+                           element={<MixPage />} />
                     <Route path="/ext-api/*"
-                           element={<ExtApi/>}/>
+                           element={<ExtApi /> }/>
                 </Routes>
             </div>
         </div>
