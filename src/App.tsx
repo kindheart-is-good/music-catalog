@@ -4,6 +4,8 @@ import StartContentPage from "./pages/StartContentPage/StartContentPage";
 import TracksPage from "./pages/TracksPage/TracksPage";
 import MixPage from "./pages/Mix/MixPage";
 import ExtApi from "./pages/ExtApi/ExtApi";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
 import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
 
@@ -23,7 +25,11 @@ function App() {
                     <Route path="/mix/*"
                            element={<MixPage />} />
                     <Route path="/ext-api/*"
-                           element={<ExtApi /> }/>
+                           element={<ExtApi /> } />
+                    <Route path="/login"
+                           element={<LoginPage />} />
+                    <Route path="/register"
+                           element={<RegisterPage />} />
                 </Routes>
             </div>
         </div>

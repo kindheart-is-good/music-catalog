@@ -1,7 +1,7 @@
 import axios from "axios";
 import {createAsyncThunk} from "@reduxjs/toolkit";
 import {AppDispatch} from "../store";
-import {extApiSlice} from "../extApiSlice";
+import {extApiSlice} from "../slices/extApiSlice";
 import {ICoffee} from "../../models/IforExtAPI";
 
 // export const fetchUsers = () => async (dispatch: AppDispatch) => {

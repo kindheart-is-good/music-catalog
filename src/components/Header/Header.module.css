@@ -13,3 +13,17 @@
 .header img {
     width: 100px;
 }
+
+.logo {
+
+}
+
+.authSection {
+    float: right;
+}
+
+.authSection button {
+    margin: 5px;
+    margin-top: 15px;
+    padding: 5px;
+}
