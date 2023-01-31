@@ -28,7 +28,7 @@ const Login: FC = () => {
 
             <button type="submit" onClick={() => {
                 //store.login(email, password);
-                const params = [email, password]
+                //const params = [email, password]
                 dispatch(fetchAuth({email, password}));
             }}>
                 Login
