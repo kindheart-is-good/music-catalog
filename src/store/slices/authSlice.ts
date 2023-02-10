@@ -1,38 +1,60 @@
 import {createSlice, PayloadAction, createAsyncThunk} from '@reduxjs/toolkit';
 import instance from "../../axios/axios";
+import {IUser} from "../../models/IUser";
 
 export const fetchAuth = createAsyncThunk<any, {}, {rejectValue: string}>(
     'auth/fetchAuth',
     async function (params, {rejectWithValue}) {
         const { data } = await instance.post('/auth/login', params);
-        //const response = await axios.post('auth/login', params);
-
-        //const {data} = await response.json();
-        //const {data} = response;
         return data as any;
     }
 );
 
-export const fetchRegister = createAsyncThunk<any, {}, {rejectValue: string}>(
+export const fetchRegister = createAsyncThunk<any, any, {rejectValue: string}>(
     'auth/fetchRegister',
     async function (params, {rejectWithValue}) {
         const { data } = await instance.post('/auth/registration', params);
-        //const response = await axios.post('auth/login', params);
-
-        //const {data} = await response.json();
-        //const {data} = response;
         return data as any;
     }
 );
 
+/*export const fetchGetUsers = createAsyncThunk<IUser[], undefined, {rejectValue: string}>(
+    'users/getUsers',
+    async function (_, { rejectWithValue }) {
+    const { data } = await instance.get('/users/getUsers');
+    if (!data) {
+        return rejectWithValue('Server Error!');
+    }
+    return data as IUser[];
+});*/
+
+/*export const fetchGetUsers = createAsyncThunk<IUser[], undefined>(
+    'users/getUsers',
+    async function (_) {
+    const { data } = await instance.get('/users/getUsers');
+    return data as IUser[];
+});*/
+
+export const fetchGetUsers = createAsyncThunk<IUser[], undefined, {rejectValue: string}>(
+    'users/getUsers',
+    async function (_, { rejectWithValue }) {
+        const response = await fetch('http://localhost:4004/users/getUsers');
+        if (!response.ok) {
+            return rejectWithValue('Server Error!');
+        }
+        const data = response.json();
+        return data;
+});
+
 interface AuthState {
-    data: any;
+    data: any | null;
     status: string;
     error: string | null;
     isLoading: boolean;
     email: string;
     token: string;
     id: string;
+    users: IUser[];
 }
 
 const initialState: AuthState = {
@@ -43,6 +65,7 @@ const initialState: AuthState = {
     email: '',
     token: '',
     id: '',
+    users: [],
 }
 
 const authSlice = createSlice({
@@ -63,11 +86,11 @@ const authSlice = createSlice({
             //state.id = null;
         },
     },
-    /*extraReducers: {
+    extraReducers: {
         [fetchAuth.pending.type]: (state) => {
             state.status = 'loading';
             state.data = null;
-            state.error = null;     // если до этого в стете была сохранена какая-то Ошибка
+            state.error = null;     // если до этого в стейте была сохранена какая-то Ошибка
         },
         [fetchAuth.fulfilled.type]: (state, action: PayloadAction<any>) => {
             state.status = 'resolved';
@@ -89,28 +112,51 @@ const authSlice = createSlice({
         [fetchRegister.rejected.type]: (state) => {
             state.status = 'error';
             state.data = null;
-        },*/
-    extraReducers: builder => {
+        },
+        [fetchGetUsers.pending.type]: (state) => {
+            state.status = 'looooadin';
+            //state.data = null;
+        },
+        [fetchGetUsers.fulfilled.type]: (state, action: PayloadAction<IUser[]>) => {
+            state.status = 'ok';
+            //state.users = action.payload;
+        },
+        [fetchGetUsers.rejected.type]: (state) => {
+            state.status = 'err';
+            //state.data = null;
+        },
+    }
+    /*extraReducers: (builder) => {
         builder
             .addCase(fetchAuth.pending, (state) => {
                 state.isLoading = true;
                 state.data = null;
-                state.error = null;     // если до этого в стете была сохранена какая-то Ошибка
+                state.error = null;     // если до этого в стейте была сохранена какая-то Ошибка
             })
             .addCase(fetchAuth.fulfilled, (state, action) => {
                 state.isLoading = false;
-                state.data = action.payload;
+                state.data = action.payload.email;
             })
             .addCase(fetchRegister.pending, (state) => {
                 state.isLoading = true;
                 state.data = null;
-                state.error = null;     // если до этого в стете была сохранена какая-то Ошибка
+                state.error = null;     // если до этого в стейте была сохранена какая-то Ошибка
             })
-            .addCase(fetchRegister.fulfilled, (state, action) => {
+            .addCase(fetchRegister.fulfilled, (state, action: PayloadAction<any>) => {
                 state.isLoading = false;
-                state.data = action.payload;
+                state.data = action.payload.token;
             })
-    }
+            .addCase(fetchGetUsers.pending, (state) => {
+                //state.isLoading = true;
+                //state.data = null;
+                //state.error = null;     // если до этого в стейте была сохранена какая-то Ошибка
+            })
+            .addCase(fetchGetUsers.fulfilled, (state, action: PayloadAction<IUser[]>) => {
+                //state.isLoading = false;
+                //state.data = action.payload;
+                state.users = action.payload;
+            })
+    }*/
 });
 
 export const selectIsAuth = (state: any) => Boolean(state.auth.data);

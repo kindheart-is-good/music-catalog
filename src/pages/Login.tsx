@@ -12,19 +12,19 @@ const Login: FC = () => {
     return (
         <form onSubmit={() => {console.log('')}} >
             <p>Enter you email:<br/>
-            <input
-                onChange={e => setEmail(e.target.value)}
-                value={email}
-                type="email"
-                placeholder="Email"
-            /></p>
+                <input
+                    onChange={e => setEmail(e.target.value)}
+                    value={email}
+                    type="email"
+                    placeholder="Email"
+                /></p>
             <p>Choose the password:<br/>
-            <input
-                onChange={e => setPassword(e.target.value)}
-                value={password}
-                type="password"
-                placeholder="Password"
-            /></p>
+                <input
+                    onChange={e => setPassword(e.target.value)}
+                    value={password}
+                    type="password"
+                    placeholder="Password"
+                /></p>
 
             <button type="submit" onClick={() => {
                 //store.login(email, password);

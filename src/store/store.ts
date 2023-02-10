@@ -13,6 +13,8 @@ const rootReducer = combineReducers({
 
 export const setupStore = () => {
     return configureStore({
+        //reducer: {},
+        //middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
         reducer: rootReducer,
         middleware: (getDefaultMiddleware) =>
             getDefaultMiddleware().concat(tracksAPI.middleware),

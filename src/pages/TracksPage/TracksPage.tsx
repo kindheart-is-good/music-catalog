@@ -8,7 +8,7 @@ const TracksPage = () => {
 
     const tracks = useAppSelector(state => state.mixReducer.tracks);
 
-    let tracksItems = tracks.map( t => <TrackItem key={t.tittle} artist={t.artist}
+    /*let tracksItems = tracks.map( t => <TrackItem key={t.tittle} artist={t.artist}
                                                         tittle={t.tittle}
                                                         album={t.album}
                                                         year={t.year}
@@ -17,7 +17,7 @@ const TracksPage = () => {
                                                         tags={t.genre}
                                                         folder={t.folder}
                                                         bpm={t.bpm}
-                                                        scale={t.scale} />);
+                                                        scale={t.scale} />);*/
 
     let tracksMiniItems = tracks.map( t => <TrackMiniItem key={t.tittle} artist={t.artist}
                                                                 tittle={t.tittle}
@@ -33,7 +33,7 @@ const TracksPage = () => {
     //debugger;
     return (
         <div>
-            { tracksItems }
+            {/*{ tracksItems }*/}
             { tracksMiniItems }
         </div>
     )

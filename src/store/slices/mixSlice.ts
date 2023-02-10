@@ -1,12 +1,36 @@
-import {createSlice, PayloadAction} from '@reduxjs/toolkit';
+import {createSlice, PayloadAction, createAsyncThunk} from '@reduxjs/toolkit';
+import axios from "axios";
 import {ITrack} from "../../models/ITrack";
+
+export const fetchTracks = createAsyncThunk(
+    'mixPage/fetchAllTracks',
+    async (_, thunkAPI) => {
+        try {
+            const response = await axios.get<ITrack[]>('http://localhost:4004/tracks');
+            return response.data;
+        } catch (e) {
+            return thunkAPI.rejectWithValue("Не удалось загрузить посты")
+        }
+    }
+)
+
+export const addTrackToMix = createAsyncThunk<any, {}, {rejectValue: string}>(
+    'mixPage/addTrackToMix',
+    async function (params, {rejectWithValue}) {
+        //const { data } = await instance.post('/auth/login', params);
+        const { data } = await axios.post('http://localhost:4004/track', params);
+        return data as any;
+    }
+)
 
 interface MixState {
     tracks: ITrack[];
     mixOne: ITrack[];
     currentMix: ITrack[];
+    newMix: ITrack[];
+    status?: string;
     isLoading: boolean;
-    error: string;
+    error: string | null;
 }
 
 const initialState: MixState = {
@@ -21,6 +45,7 @@ const initialState: MixState = {
         {artist: 'Aurora Halal', tittle: 'Eternal Blue (Wata Igarashi Cruising Remix)', album: 'Liquiddity', year: 2019, label: 'Mutual Dreaming Recordings', genre: 'Melodic House & Techno', tags: 'electronic brooklyn experimental techno New York', folder: '_ mood LIGHT', bpm: 128, scale: 'A# maj'},
     ],
     currentMix: [],
+    newMix: [],
     isLoading: false,
     error: '',
 }
@@ -29,7 +54,7 @@ const mixSlice = createSlice({
     name: 'mixPage',
     initialState,
     reducers: {
-        usersFetching(state) {                      // будет вызываться в тот момент когда мы начинаем подгрузку пользователей
+        /*usersFetching(state) {                      // будет вызываться в тот момент когда мы начинаем подгрузку пользователей
             state.isLoading = true;
         },
         usersFetchingSuccess(state, action: PayloadAction<ITrack[]>) {      // будет вызываться когда подгрузка пользователей произошла успешно
@@ -40,8 +65,36 @@ const mixSlice = createSlice({
         usersFetchingError(state, action: PayloadAction<string>) {      // будет вызываться когда произошла ошибка
             state.isLoading = false;
             state.error = action.payload;   // Если у нас произошла ошибка то мы также должны сохранить в состоянии сообщение об этой ошибке. А само сообщение об ошибке мы будем получать в payload
-        },
+        },*/
     },
+    extraReducers: {
+        [fetchTracks.pending.type]: (state) => {                                        // Сценарий ожидания
+            state.isLoading = true;
+        },
+        [fetchTracks.fulfilled.type]: (state, action: PayloadAction<ITrack[]>) => {      // Сценарий успешной загрузки
+            state.isLoading = false;
+            state.error = '';
+            state.currentMix = action.payload;
+        },
+        [fetchTracks.rejected.type]: (state, action: PayloadAction<string>) => {        // Сценарий когда произошла ошибка
+            state.isLoading = false;
+            state.error = action.payload;
+        },
+        [addTrackToMix.pending.type]: (state) => {
+            state.status = 'loading';
+            //state.newMix = null;
+            state.error = null;     // если до этого в стейте была сохранена какая-то Ошибка
+        },
+        [addTrackToMix.fulfilled.type]: (state, action: PayloadAction<any>) => {
+            state.status = 'resolved';
+            state.newMix = action.payload;
+        },
+        [addTrackToMix.rejected.type]: (state, action: PayloadAction<any>) => {     // т.к. внутри createAsyncThunk создали rejectWithValue
+            state.status = 'rejected';
+            //state.newMix = null;
+            state.error = action.payload;
+        },
+    }
 });
 
 // деструктуризируем поле actions которое получаем из Slice и в фигурных скобках указываем какие поля мы хотим получить.
